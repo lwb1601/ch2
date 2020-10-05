@@ -5,19 +5,24 @@ from django.views import generic
 # def index(request):
 #     latest_question_list = Question.objects.all().order_by('-pub_date')[:5]
 #     return render(request, 'polls/index.html', {'latest_question_list': latest_question_list})
-class Index(generic.ListView):
-    model = Question
+
+class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
     template_name = 'polls/index.html'
+    def get_queryset(self):
+        return Question.object.order_by('-pub_date')[:3]
 
 
 # def detail(request, question_id):
 #     question = get_object_or_404(Question, pk=question_id)
 #     return render(request, 'polls/detail.html', {'question': question})
-class Detail(generic.DetailView):
+
+
+class DetailView(generic.DetailView):
     model = Question
     context_object_name = 'question'
     template_name = 'polls/detail.html'
+
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
