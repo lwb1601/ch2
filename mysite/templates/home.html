@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mysite/style.css' %}"/>
+</head>
+<body>
+<h1>MySite</h1>
+<div id="content">
+    <a href="{% url 'polls:index' %}" >
+        <div>polls app</div>
+    </a>
+        <div>bookmark app</div>
+        <div>books</div>
+</div>
+<footer>
+    <div class="info">
+        인천과학예술영재학교<br>
+        주소: 인천광역시 연수구 송도2동 아카데미로 192<br>
+        연락처: 032-890-6700<br>
+        교직원 수: 62명 (2018년 5월 1일 기준)<br>
+        학생 수: 230명 (2018년 5월 1일 기준)<br>
+    </div>
+
+    <div class="info">
+        이름: 홍길동<br>
+        학번: 20312<br>
+        홈페이지 소개<br>
+    </div>
+</footer>
+</body>
+
+</html>
