@@ -10,7 +10,7 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
     template_name = 'polls/index.html'
     def get_queryset(self):
-        return Question.object.order_by('-pub_date')[:3]
+        return Question.objects.all().order_by('-pub_date')[:3]
 
 
 # def detail(request, question_id):
