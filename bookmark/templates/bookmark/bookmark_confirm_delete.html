@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="alert alert-danger">
+        {{ object }} <br>
+        정말로 삭제 하시겠습니까?
+    </div>
+    <input type="submit" value="Delete" class="btn btn-danger">
+</form>
+</body>
+</html>

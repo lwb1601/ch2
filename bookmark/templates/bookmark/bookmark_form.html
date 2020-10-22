@@ -5,11 +5,11 @@
     <title>Title</title>
 </head>
 <body>
+<h1>Create or Update</h1>
 <form action="" method="post" autocomplete="off"> <!-- 이전에 브라우저가 입력한 것 기억하여 자동완성 하는기능 -->
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Add" class="btn btn-info btn-sm">
+    <input type="submit" value="Add or Change" class="btn btn-info btn-sm">
 </form>
-
 </body>
 </html>
