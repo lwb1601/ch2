@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{% extends 'bookmark/layout.html' %}
+{% block title %} 북마크 상세정보 {% endblock %}
+{% block content %}
 <body>
 {{ object.site_name }} <br>
 {{ object.url }}
 </body>
-</html>
+{% endblock %}
