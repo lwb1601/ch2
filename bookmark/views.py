@@ -1,6 +1,8 @@
 from django.views import generic
 from .models import Bookmark
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from
 
 class BookmarkListView(generic.ListView):
     model = Bookmark
