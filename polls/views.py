@@ -1,16 +1,28 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, reverse
 from polls.models import Question, Choice
 from django.views import generic
+from django.urls import reverse_lazy
+from .forms import ChoiceForm, QuestionForm
 # Create your views here.
 # def index(request):
 #     latest_question_list = Question.objects.all().order_by('-pub_date')[:5]
 #     return render(request, 'polls/index.html', {'latest_question_list': latest_question_list})
 
+class QuestionCV(generic.CreateView):
+    template_name = 'polls/question_create.html'
+    success_url = '/'
+    form_class = QuestionForm
+
+class ChoiceCV(generic.CreateView):
+    template_name = 'polls/choice_create.html'
+    success_url = reverse_lazy('polls:index')
+    form_class = ChoiceForm
+
 class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
     template_name = 'polls/index.html'
     def get_queryset(self):
-        return Question.objects.all().order_by('-pub_date')[:3]
+        return Question.objects.all().order_by('-pub_date')[:10]
 
 
 # def detail(request, question_id):
