@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, reverse
-from polls.models import Question, Choice
+from polls.models import Question, Choice, Kind
 from django.views import generic
 from django.urls import reverse_lazy
 from .forms import ChoiceForm, QuestionForm
@@ -9,9 +9,11 @@ from .forms import ChoiceForm, QuestionForm
 #     return render(request, 'polls/index.html', {'latest_question_list': latest_question_list})
 
 class QuestionCV(generic.CreateView):
+    model = Question
     template_name = 'polls/question_create.html'
-    success_url = '/'
-    form_class = QuestionForm
+    success_url = reverse_lazy('polls:index')
+    fields = ['question_text']
+    #form_class = QuestionForm
 
 class ChoiceCV(generic.CreateView):
     template_name = 'polls/choice_create.html'
@@ -19,10 +21,13 @@ class ChoiceCV(generic.CreateView):
     form_class = ChoiceForm
 
 class IndexView(generic.ListView):
-    context_object_name = 'latest_question_list'
+    model = Kind
+    context_object_name = 'new_list'
     template_name = 'polls/index.html'
-    def get_queryset(self):
-        return Question.objects.all().order_by('-pub_date')[:10]
+
+
+    #def get_queryset(self):
+    #    return Question.objects.all().order_by('-pub_date')[:3]
 
 
 # def detail(request, question_id):
