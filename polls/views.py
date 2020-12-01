@@ -15,19 +15,25 @@ class QuestionCV(generic.CreateView):
     fields = ['question_text']
     #form_class = QuestionForm
 
+
+
 class ChoiceCV(generic.CreateView):
     template_name = 'polls/choice_create.html'
     success_url = reverse_lazy('polls:index')
     form_class = ChoiceForm
 
 class IndexView(generic.ListView):
-    model = Kind
+    model = Question
     context_object_name = 'new_list'
     template_name = 'polls/index.html'
 
+    def get_queryset(self):
+        return Question.objects.all().order_by('-pub_date')[:3]
 
-    #def get_queryset(self):
-    #    return Question.objects.all().order_by('-pub_date')[:3]
+#def index(request):
+#    latest_question_list = Question.objects.all().order_by('-pub_date')[:3]
+#    context = {'latest_question_list': latest_question_list}
+#    return render(request, 'polls/index.html', context)
 
 
 # def detail(request, question_id):
